@@ -1,7 +1,5 @@
 package xyz.chengzi.halma.model;
 
-import java.awt.*;
-
 public class ChessBoard {
     private Square[][] grid;
     private int dimension;

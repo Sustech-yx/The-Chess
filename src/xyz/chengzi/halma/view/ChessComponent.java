@@ -1,14 +1,18 @@
 package xyz.chengzi.halma.view;
 
+import xyz.chengzi.halma.model.Type;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class ChessComponent extends JComponent {
-    private Color color;
+    private int player;
+    private Type type;
     private boolean selected;
 
-    public ChessComponent(Color color) {
-        this.color = color;
+    public ChessComponent(int Player, Type type) {
+        this.player = Player;
+        this.type = type;
     }
 
     public boolean isSelected() {
@@ -27,6 +31,7 @@ public class ChessComponent extends JComponent {
 
     private void paintChess(Graphics g) {
         ((Graphics2D) g).setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        Color color = player == 0 ? Color.WHITE : Color.darkGray;
         g.setColor(color);
 
         int spacing = (int) (getWidth() * 0.05);

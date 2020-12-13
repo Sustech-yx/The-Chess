@@ -14,7 +14,7 @@ public class GameController implements GameListener {
     private ChessBoardComponent view;
     private ChessBoard model;
 
-    private Color currentPlayer;
+    private int currentPlayer;
     private ChessPiece selectedPiece;
     private ChessBoardLocation selectedLocation;
 
@@ -22,7 +22,7 @@ public class GameController implements GameListener {
         this.view = boardComponent;
         this.model = chessBoard;
 
-        this.currentPlayer = Color.RED;
+        this.currentPlayer = 0;
         view.registerListener(this);
         initGameState();
     }
@@ -33,22 +33,22 @@ public class GameController implements GameListener {
                 ChessBoardLocation location = new ChessBoardLocation(row, col);
                 ChessPiece piece = model.getChessPieceAt(location);
                 if (piece != null) {
-                    view.setChessAtGrid(location, piece.getColor());
+                    view.setChessAtGrid(location, piece.getPlayer(), piece.getType());
                 }
             }
         }
         view.repaint();
     }
 
-    public Color nextPlayer() {
-        return currentPlayer = currentPlayer == Color.RED ? Color.GREEN : Color.RED;
+    public int nextPlayer() {
+        return currentPlayer = currentPlayer == 0 ? 1 : 0;
     }
 
     @Override
     public void onPlayerClickSquare(ChessBoardLocation location, SquareComponent component) {
         if (selectedLocation != null && model.isValidMove(selectedLocation, location)) {
             model.moveChessPiece(selectedLocation, location);
-            view.setChessAtGrid(location, selectedPiece.getColor());
+            view.setChessAtGrid(location, selectedPiece.getPlayer(), selectedPiece.getType());
             view.removeChessAtGrid(selectedLocation);
             view.repaint();
             selectedPiece = null;
@@ -60,7 +60,7 @@ public class GameController implements GameListener {
     @Override
     public void onPlayerClickChessPiece(ChessBoardLocation location, ChessComponent component) {
         ChessPiece piece = model.getChessPieceAt(location);
-        if (piece.getColor() == currentPlayer && (selectedPiece == piece || selectedPiece == null)) {
+        if (piece.getPlayer() == currentPlayer && (selectedPiece == piece || selectedPiece == null)) {
             if (selectedPiece == null) {
                 selectedPiece = piece;
                 selectedLocation = location;

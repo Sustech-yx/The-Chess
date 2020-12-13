@@ -10,7 +10,7 @@ import javax.swing.*;
 public class Game {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            ChessBoardComponent chessBoardComponent = new ChessBoardComponent(760, 19);
+            ChessBoardComponent chessBoardComponent = new ChessBoardComponent(760, 8);
             ChessBoard chessBoard = new ChessBoard(19);
             GameController controller = new GameController(chessBoardComponent, chessBoard);
 

@@ -2,6 +2,7 @@ package xyz.chengzi.halma.view;
 
 import xyz.chengzi.halma.listener.GameListener;
 import xyz.chengzi.halma.model.ChessBoardLocation;
+import xyz.chengzi.halma.model.Type;
 
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -44,9 +45,9 @@ public class ChessBoardComponent extends JComponent {
         return gridComponents[location.getRow()][location.getColumn()];
     }
 
-    public void setChessAtGrid(ChessBoardLocation location, Color color) {
+    public void setChessAtGrid(ChessBoardLocation location, int player, Type type) {
         removeChessAtGrid(location);
-        getGridAt(location).add(new ChessComponent(color));
+        getGridAt(location).add(new ChessComponent(player, type));
     }
 
     public void removeChessAtGrid(ChessBoardLocation location) {
