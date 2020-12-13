@@ -1,15 +1,16 @@
 package xyz.chengzi.halma.model;
 
-import java.awt.*;
-
-public class ChessPiece {
-    private Color color;
-
-    public ChessPiece(Color color) {
-        this.color = color;
+public abstract class ChessPiece {
+    private final int player; // 0 for black, 1 for white
+    private final Type type;
+    public ChessPiece(int player, Type type) {
+        this.player = player;
+        this.type = type;
     }
-
-    public Color getColor() {
-        return color;
+    public Type getType () {
+        return type;
+    }
+    public int getPlayer () {
+        return player;
     }
 }

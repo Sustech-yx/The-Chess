@@ -24,12 +24,7 @@ public class ChessBoard {
 
     private void initPieces() {
         // TODO: This is only a demo implementation.
-        grid[0][0].setPiece(new ChessPiece(Color.RED));
-        grid[0][1].setPiece(new ChessPiece(Color.RED));
-        grid[1][0].setPiece(new ChessPiece(Color.RED));
-        grid[dimension - 1][dimension - 1].setPiece(new ChessPiece(Color.GREEN));
-        grid[dimension - 1][dimension - 2].setPiece(new ChessPiece(Color.GREEN));
-        grid[dimension - 2][dimension - 1].setPiece(new ChessPiece(Color.GREEN));
+
     }
 
     public Square getGridAt(ChessBoardLocation location) {
