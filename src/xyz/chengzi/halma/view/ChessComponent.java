@@ -31,11 +31,14 @@ public class ChessComponent extends JComponent {
 
     private void paintChess(Graphics g) {
         ((Graphics2D) g).setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        Color color = player == 0 ? Color.WHITE : Color.darkGray;
+        Color color = player == 0 ? Color.white : Color.BLACK;
         g.setColor(color);
 
         int spacing = (int) (getWidth() * 0.05);
         g.fillOval(spacing, spacing, getWidth() - 2 * spacing, getHeight() - 2 * spacing);
+
+
+
 
         if (selected) { // Draw a + sign in the center of the piece.
             g.setColor(new Color(255 - color.getRed(), 255 - color.getGreen(), 255 - color.getBlue()));

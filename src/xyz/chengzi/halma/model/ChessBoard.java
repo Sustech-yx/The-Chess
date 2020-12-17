@@ -1,5 +1,7 @@
 package xyz.chengzi.halma.model;
 
+import xyz.chengzi.halma.model.DifferentTypeOfPiece.*;
+
 public class ChessBoard {
     private Square[][] grid;
     private int dimension;
@@ -22,7 +24,12 @@ public class ChessBoard {
 
     private void initPieces() {
         // TODO: This is only a demo implementation.
-
+        for (int i = 0; i < dimension; i ++) {
+            grid[i][1].setPiece(new PiecePawn(0));
+        }
+        for (int i = 0; i < dimension; i ++) {
+            grid[i][6].setPiece(new PiecePawn(1));
+        }
     }
 
     public Square getGridAt(ChessBoardLocation location) {

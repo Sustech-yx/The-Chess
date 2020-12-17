@@ -4,7 +4,8 @@ import xyz.chengzi.halma.model.ChessPiece;
 import xyz.chengzi.halma.model.Type;
 
 public class PieceRook extends ChessPiece {
-    public PieceRook(int player, Type type) {
-        super(player, type);
+    public PieceRook(int player) {
+        super(player);
+        this.type = Type.Rook;
     }
 }

@@ -11,7 +11,7 @@ public class Game {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
             ChessBoardComponent chessBoardComponent = new ChessBoardComponent(760, 8);
-            ChessBoard chessBoard = new ChessBoard(19);
+            ChessBoard chessBoard = new ChessBoard(8);
             GameController controller = new GameController(chessBoardComponent, chessBoard);
 
             GameFrame mainFrame = new GameFrame();

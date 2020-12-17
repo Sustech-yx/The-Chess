@@ -11,8 +11,8 @@ import javax.swing.*;
 import java.awt.*;
 
 public class ChessBoardComponent extends JComponent {
-    private static final Color BOARD_COLOR_1 = new Color(255, 255, 204);
-    private static final Color BOARD_COLOR_2 = new Color(170, 170, 170);
+    private static final Color BOARD_COLOR_1 = new Color(252, 230, 201);
+    private static final Color BOARD_COLOR_2 = new Color(239, 125, 45);
 
     private List<GameListener> listenerList = new ArrayList<>();
     private SquareComponent[][] gridComponents;
