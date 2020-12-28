@@ -2,7 +2,7 @@
   <artifact type="jar" name="Halma:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/Halma_jar</output-path>
     <root id="archive" name="Halma.jar">
-      <element id="module-output" name="Halma" />
+      <element id="module-output" name="Chess" />
     </root>
   </artifact>
 </component>
