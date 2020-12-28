@@ -47,7 +47,7 @@ public class ChessBoard {
         grid[dimension - 3][dimension - 1].setPiece(new PieceBishop(1));
         grid            [3][dimension - 1].setPiece(new PieceQueen(1));
         grid[dimension - 4][dimension - 1].setPiece(new PieceKing(1));
-
+        // initial operation has been complete!
     }
 
     public Square getGridAt(ChessBoardLocation location) {
@@ -70,7 +70,7 @@ public class ChessBoard {
 
     public void moveChessPiece(ChessBoardLocation src, ChessBoardLocation dest) {
         if (!isValidMove(src, dest)) {
-            throw new IllegalArgumentException("Illegal halma move");
+            throw new IllegalArgumentException("Illegal chessPiece move");
         }
         setChessPieceAt(dest, removeChessPieceAt(src));
     }
