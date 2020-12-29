@@ -11,8 +11,6 @@ import javax.swing.*;
 import java.awt.*;
 
 public class ChessBoardComponent extends JComponent {
-    private static final Color BOARD_COLOR_1 = new Color(252, 230, 201);
-    private static final Color BOARD_COLOR_2 = new Color(239, 125, 45);
 
     private List<GameListener> listenerList = new ArrayList<>();
     private SquareComponent[][] gridComponents;
@@ -29,12 +27,19 @@ public class ChessBoardComponent extends JComponent {
         this.gridSize = size / dimension;
         initGridComponents();
     }
-
+    private String[] list = {"B", "C", "D", "E", "F", "G", "H"};
     private void initGridComponents() {
         for (int row = 0; row < dimension; row++) {
             for (int col = 0; col < dimension; col++) {
-                gridComponents[row][col] = new SquareComponent(gridSize,
-                        (row + col) % 2 == 0 ? BOARD_COLOR_1 : BOARD_COLOR_2);
+                if (row == 0 && col == dimension - 1) {
+                    gridComponents[row][col] = new SquareComponent(gridSize, (row + col) % 2 == 0 ? 0 : 1, "8A");
+                } else if (row == 0) {
+                    gridComponents[row][col] = new SquareComponent(gridSize, (row + col) % 2 == 0 ? 0 : 1, String.valueOf(col + 1));
+                } else if (col == dimension - 1) {
+                    gridComponents[row][col] = new SquareComponent(gridSize, (row + col) % 2 == 0 ? 0 : 1, list[row - 1]);
+                } else {
+                    gridComponents[row][col] = new SquareComponent(gridSize, (row + col) % 2 == 0 ? 0 : 1);
+                }
                 gridComponents[row][col].setLocation(row * gridSize, col * gridSize);
                 add(gridComponents[row][col]);
             }
