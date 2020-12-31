@@ -48,9 +48,11 @@ public class GameController implements GameListener {
         int row_in_message = location.getRow();
         int column_in_message = location.getColumn();
         String message = "On Player" + (currentPlayer == 1 ? " white" : " black") + " click at " + LIST[row_in_message]
-                + (column_in_message + 1) + ", an empty grid.";
-        System.out.println(message);
-        if (selectedLocation != null && model.isValidMove(selectedLocation, location)) {
+                + (column_in_message + 1) + ", an empty grid. ";
+        System.out.print(message);
+
+        if (selectedLocation != null && model.getChessPieceAt(selectedLocation).isValidMove(selectedLocation, location, model)) {
+            System.out.println("It's a valid move.");
             model.moveChessPiece(selectedLocation, location);
             view.setChessAtGrid(location, selectedPiece.getPlayer(), selectedPiece.getType());
             view.removeChessAtGrid(selectedLocation);
@@ -58,6 +60,9 @@ public class GameController implements GameListener {
             selectedPiece = null;
             selectedLocation = null;
             nextPlayer();
+        } else {
+            if (selectedPiece == null) System.out.println("Have not choose the piece.");
+            else System.out.println("But it is not a valid move.");
         }
     }
 
@@ -68,6 +73,7 @@ public class GameController implements GameListener {
         String message = "On Player" + (currentPlayer == 1 ? " white" : " black") + " click at " + LIST[row_in_message]
                 + (column_in_message + 1) + " , an gird with " + component.getType().toString() + ".";
         System.out.println(message);
+
         ChessPiece piece = model.getChessPieceAt(location);
         if (piece.getPlayer() == currentPlayer && (selectedPiece == piece || selectedPiece == null)) {
             if (selectedPiece == null) {

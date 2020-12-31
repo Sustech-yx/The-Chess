@@ -30,6 +30,9 @@ public class ChessBoard {
         for (int i = 0; i < dimension; i ++) {
             grid[i][6].setPiece(new PiecePawn(1));
         }
+
+        grid[3][5].setPiece(new PiecePawn(0));
+
         grid            [0][0].setPiece(new PieceRook(0));
         grid[dimension - 1][0].setPiece(new PieceRook(0));
         grid            [1][0].setPiece(new PieceKnight(0));
@@ -69,9 +72,9 @@ public class ChessBoard {
     }
 
     public void moveChessPiece(ChessBoardLocation src, ChessBoardLocation dest) {
-        if (!isValidMove(src, dest)) {
-            throw new IllegalArgumentException("Illegal chessPiece move");
-        }
+//        if (!isValidMove(src, dest)) {
+//            throw new IllegalArgumentException("Illegal chessPiece move");
+//        }
         setChessPieceAt(dest, removeChessPieceAt(src));
     }
 
