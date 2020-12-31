@@ -20,7 +20,7 @@ public class GameController implements GameListener {
         this.view = boardComponent;
         this.model = chessBoard;
 
-        this.currentPlayer = 0;
+        this.currentPlayer = 1;
         view.registerListener(this);
         initGameState();
     }
@@ -42,8 +42,14 @@ public class GameController implements GameListener {
         return currentPlayer = currentPlayer == 0 ? 1 : 0;
     }
 
+    private final String[] LIST = {"A", "B", "C", "D", "E", "F", "G", "H"};
     @Override
     public void onPlayerClickSquare(ChessBoardLocation location, SquareComponent component) {
+        int row_in_message = location.getRow();
+        int column_in_message = location.getColumn();
+        String message = "On Player" + (currentPlayer == 1 ? " white" : " black") + " click at " + LIST[row_in_message]
+                + (column_in_message + 1) + ", an empty grid.";
+        System.out.println(message);
         if (selectedLocation != null && model.isValidMove(selectedLocation, location)) {
             model.moveChessPiece(selectedLocation, location);
             view.setChessAtGrid(location, selectedPiece.getPlayer(), selectedPiece.getType());
@@ -57,6 +63,11 @@ public class GameController implements GameListener {
 
     @Override
     public void onPlayerClickChessPiece(ChessBoardLocation location, ChessComponent component) {
+        int row_in_message = location.getRow();
+        int column_in_message = location.getColumn();
+        String message = "On Player" + (currentPlayer == 1 ? " white" : " black") + " click at " + LIST[row_in_message]
+                + (column_in_message + 1) + " , an gird with " + component.getType().toString() + ".";
+        System.out.println(message);
         ChessPiece piece = model.getChessPieceAt(location);
         if (piece.getPlayer() == currentPlayer && (selectedPiece == piece || selectedPiece == null)) {
             if (selectedPiece == null) {

@@ -12,4 +12,6 @@ public abstract class ChessPiece {
     public int getPlayer () {
         return player;
     }
+
+    public abstract boolean isValidMove (ChessBoardLocation src, ChessBoardLocation dest, ChessBoard model);
 }

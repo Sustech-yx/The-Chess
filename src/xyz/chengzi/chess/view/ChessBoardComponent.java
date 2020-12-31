@@ -90,4 +90,3 @@ public class ChessBoardComponent extends JComponent {
         listenerList.remove(listener);
     }
 }
-//

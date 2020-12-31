@@ -94,7 +94,11 @@ public class ChessComponent extends JComponent {
                     break;
                 case Knight:g.drawImage(black_knight, spacing, spacing, getWidth() - 2 * spacing, getHeight() - 2 * spacing, this);
                     break;
+            }
         }
     }
-}
+
+    public Type getType() {
+        return type;
+    }
 }
