@@ -7,5 +7,5 @@ import xyz.chengzi.chess.view.SquareComponent;
 public interface GameListener {
     void onPlayerClickSquare(ChessBoardLocation location, SquareComponent component);
 
-    void onPlayerClickChessPiece(ChessBoardLocation location, ChessComponent component);
+    void onPlayerClickChessPiece(ChessBoardLocation location, ChessComponent component1, SquareComponent component2);
 }

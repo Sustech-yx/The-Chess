@@ -15,34 +15,80 @@ public class PiecePawn extends ChessPiece {
 
     // TODO: 2021/1/1 fixing the rule of pawn move.
     @Override
-    public boolean isValidMove(ChessBoardLocation src, ChessBoardLocation dest, ChessBoard model) {
+    public boolean isValidMove (ChessBoardLocation src, ChessBoardLocation dest, ChessBoard model) {
         int srcColumn = src.getColumn(), srcRow = src.getRow(), destColumn = dest.getColumn(), destRow = dest.getRow();
 
         if (isFirstMove()) {
-            isFirstMove = false;
             if (getPlayer() == 1) { // white
-                if (srcRow == destRow && srcColumn - destColumn == 1 && model.getChessPieceAt(dest) == null) return true;
+                if (srcRow == destRow && srcColumn - destColumn == 1 && model.getChessPieceAt(dest) == null) {
+                    this.isFirstMove = false;
+                    return true;
+                }
                 else if (srcRow == destRow && srcColumn - destColumn == 2 &&
                         model.getChessPieceAt(dest) == null &&
-                        model.getChessPieceAt(new ChessBoardLocation(srcRow, srcColumn - 1)) == null) return true;
+                        model.getChessPieceAt(new ChessBoardLocation(srcRow, srcColumn - 1)) == null) {
+                    this.isFirstMove = false;
+                    return true;
+                }
                 else if (Math.abs(srcRow - destRow) == 1 && srcColumn - destColumn == 1 &&
                         model.getChessPieceAt(dest) != null &&
-                        model.getChessPieceAt(dest).getPlayer() == 0) return true;
+                        model.getChessPieceAt(dest).getPlayer() == 0) {
+                    this.isFirstMove = false;
+                    return true;
+                }
                 else return false;
             } else { // black
-
+                if (srcRow == destRow && srcColumn - destColumn == -1 && model.getChessPieceAt(dest) == null) {
+                    this.isFirstMove = false;
+                    return true;
+                }
+                else if (srcRow == destRow && srcColumn - destColumn == -2 &&
+                        model.getChessPieceAt(dest) == null &&
+                        model.getChessPieceAt(new ChessBoardLocation(srcRow, srcColumn + 1)) == null) {
+                    this.isFirstMove = false;
+                    return true;
+                }
+                else if (Math.abs(srcRow - destRow) == 1 && srcColumn - destColumn == -1 &&
+                        model.getChessPieceAt(dest) != null &&
+                        model.getChessPieceAt(dest).getPlayer() == 1) {
+                    this.isFirstMove = false;
+                    return true;
+                }
+                else return false;
             }
         } else {
+            check();
             if (getPlayer() == 1) { // white
-
+                if (srcRow == destRow && srcColumn - destColumn == 1 && model.getChessPieceAt(dest) == null) {
+                    this.isFirstMove = false;
+                    return true;
+                } else if (Math.abs(srcRow - destRow) == 1 && srcColumn - destColumn == 1 &&
+                        model.getChessPieceAt(dest) != null &&
+                        model.getChessPieceAt(dest).getPlayer() == 0) {
+                    this.isFirstMove = false;
+                    return true;
+                }
+                else return false;
             } else { // black
-
+                if (srcRow == destRow && srcColumn - destColumn == -1 && model.getChessPieceAt(dest) == null) {
+                    this.isFirstMove = false;
+                    return true;
+                } else if (Math.abs(srcRow - destRow) == 1 && srcColumn - destColumn == -1 &&
+                        model.getChessPieceAt(dest) != null &&
+                        model.getChessPieceAt(dest).getPlayer() == 1) {
+                    this.isFirstMove = false;
+                    return true;
+                }
+                else return false;
             }
         }
-        return false;
     }
 
     public boolean isFirstMove() {
         return isFirstMove;
+    }
+
+    private boolean check() {
+        return false;
     }
 }

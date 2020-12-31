@@ -67,11 +67,11 @@ public class GameController implements GameListener {
     }
 
     @Override
-    public void onPlayerClickChessPiece(ChessBoardLocation location, ChessComponent component) {
+    public void onPlayerClickChessPiece(ChessBoardLocation location, ChessComponent component1, SquareComponent component2) {
         int row_in_message = location.getRow();
         int column_in_message = location.getColumn();
         String message = "On Player" + (currentPlayer == 1 ? " white" : " black") + " click at " + LIST[row_in_message]
-                + (column_in_message + 1) + " , an gird with " + component.getType().toString() + ".";
+                + (column_in_message + 1) + " , an gird with " + component1.getType().toString() + ".";
         System.out.println(message);
 
         ChessPiece piece = model.getChessPieceAt(location);
@@ -83,8 +83,10 @@ public class GameController implements GameListener {
                 selectedPiece = null;
                 selectedLocation = null;
             }
-            component.setSelected(!component.isSelected());
-            component.repaint();
+            component1.setSelected(!component1.isSelected());
+            component1.repaint();
+        } else if (piece.getPlayer() != currentPlayer) {
+            onPlayerClickSquare(location, component2);
         }
     }
 }

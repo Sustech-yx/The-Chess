@@ -31,8 +31,6 @@ public class ChessBoard {
             grid[i][6].setPiece(new PiecePawn(1));
         }
 
-        grid[3][5].setPiece(new PiecePawn(0));
-
         grid            [0][0].setPiece(new PieceRook(0));
         grid[dimension - 1][0].setPiece(new PieceRook(0));
         grid            [1][0].setPiece(new PieceKnight(0));

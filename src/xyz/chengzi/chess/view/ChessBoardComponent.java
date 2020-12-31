@@ -76,7 +76,7 @@ public class ChessBoardComponent extends JComponent {
                 if (clickedComponent.getComponentCount() == 0) {
                     listener.onPlayerClickSquare(location, (SquareComponent) clickedComponent);
                 } else {
-                    listener.onPlayerClickChessPiece(location, (ChessComponent) clickedComponent.getComponent(0));
+                    listener.onPlayerClickChessPiece(location, (ChessComponent) clickedComponent.getComponent(0), (SquareComponent) clickedComponent);
                 }
             }
         }
